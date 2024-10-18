@@ -3,14 +3,18 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #121212; /* Un noir très foncé pour le fond */
+  --foreground: #EAEAEA; /* Un gris très clair pour le texte principal */
+  --accent-color: #1DB954; /* Une couleur accentuée (vert) pour les éléments d'accent */
+  --border-color: #2B2B2B; /* Une couleur pour les bordures, légèrement plus claire que le fond */
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #121212; /* Fond noir pour le mode sombre */
+    --foreground: #EAEAEA; /* Texte gris très clair pour le mode sombre */
+    --accent-color: #1DB954; /* Vert pour les éléments d'accent */
+    --border-color: #2B2B2B; /* Couleur des bordures pour le mode sombre */
   }
 }
 
@@ -20,8 +24,47 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+input {
+  color: #0a0a0a;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+
+@keyframes pulse {
+  0% {
+      transform: scale(1);
+      opacity: 0.5;
+  }
+  50% {
+      transform: scale(1.05);
+      opacity: 1;
+  }
+  100% {
+      transform: scale(1);
+      opacity: 0.6;
+  }
+}
+
+.animate-custom-pulse {
+  animation: pulse 1s infinite;
+}
+
+@keyframes ping {
+  0% {
+      transform: scale(1);
+      opacity: 0.8; /* Ajustez la valeur d'opacité ici */
+  }
+  100% {
+      transform: scale(1.1);
+      opacity: 1; /* Ajustez la valeur d'opacité ici */
+  }
+}
+
+.animate-custom-ping {
+  animation: ping 0.6s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
